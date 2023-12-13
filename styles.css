@@ -1,0 +1,132 @@
+/* styles.css */
+
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    padding: 15px 0;
+}
+
+.container-lg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.svg-square {
+    fill: #fff;
+}
+
+.svg-text {
+    fill: #fff;
+}
+
+.navbar-toggler {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.nav-item.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #555;
+}
+
+.nav-link:hover {
+    color: #ffcc00; /* Change this to your preferred hover color */
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block;
+        background: none;
+        border: none;
+        color: black;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .navbar-collapse {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #333;
+        padding: 20px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-item {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .navbar-toggler.active + .navbar-collapse {
+        display: block;
+    }
+}
