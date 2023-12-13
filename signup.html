@@ -12,32 +12,39 @@
             background-color: #f8f9fa;
         }
 
-        .login-container {
+        .signup-container {
             max-width: 400px;
             margin: auto;
             margin-top: 100px;
         }
     </style>
-    <title>Login - QR-Code Restaurants</title>
+    <title>Sign Up - QR-Code Restaurants</title>
 </head>
 
 <body>
-    <!-- Login Form -->
-    <div class="container login-container">
-        <h2 class="text-center mb-4">Login</h2>
+    <!-- Navbar (You can include it if needed) -->
+    <!-- ... (your existing navbar code) ... -->
+
+    <!-- Signup Form -->
+    <div class="container signup-container">
+        <h2 class="text-center mb-4">Sign Up</h2>
         <form>
-            <div class="form-group mb-3">
-                <label for="username">Username</label>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" placeholder="Enter your username">
             </div>
-            <div class="form-group mb-3">
-                <label for="password">Password</label>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" placeholder="Enter your password">
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
         </form>
-        <div class="text-center mb-3">
-            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        <div class="text-center mt-3">
+            <p>Already have an account? <a href="login.html">Login</a></p>
         </div>
     </div>
 
