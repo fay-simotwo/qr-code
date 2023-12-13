@@ -17,8 +17,8 @@
   <title>QR-Code Restaurants</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="z-index: 1000;">
+    <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="Assets/Caribou_Karibu_Logo_New and final/Caribou_Karibu_Logo.png" alt="Caribou Logo" width="40" height="40">
     </a>
@@ -28,10 +28,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#features">Features</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Our Clients</a>
@@ -64,10 +64,10 @@
       <form class="d-flex" role="search">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="login.html" id="loginLink">Login</a>
           </li>
         </ul>
-        <button class="btn btn-primary" type="button">Create Menu</button>
+        <button class="btn btn-primary" type="button" id="createMenuBtn">Create Menu</button>
 
       </form>
     </div>
@@ -157,9 +157,10 @@
       </div>
 
       <div class="row align-items-center">
-          <div class="col-lg-6">
-              <img src="Assets/menu3.jpg" alt="" class="img-fluid d-block mx-auto ms-lg-auto" style="width: 500px; max-width: 90vw" />
-          </div>
+        <div class="col-lg-6">
+          <img src="Assets/menu3.jpg" alt="" class="img-fluid d-block mx-auto ms-lg-auto" style="width: 500px; max-width: 90vw; border-radius: 10px;" />
+      </div>
+      
           <div class="col-lg-5 offset-lg-1">
               <h1 class="fs-38 mb-4">More returning clients and fewer waiters</h1>
               <p class="text-muted my-5">Transform your restaurant into a streamlined hub of customer satisfaction and loyalty. Here&#039;s how:</p>
@@ -235,6 +236,49 @@
   </div>
 </section>
 
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">Login</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <!-- Include the login form here or load it dynamically -->
+              <!-- For simplicity, let's assume you have a login form similar to the one in the login.html file -->
+              <form>
+                  <!-- ... Login form fields ... -->
+                  <button type="submit" class="btn btn-primary btn-block">Login</button>
+              </form>
+              <div class="text-center mt-3">
+                  <p>Don't have an account? <a href="#">Sign up</a></p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.getElementById('createMenuBtn').addEventListener('click', function () {
+      // Check the user's authentication status
+      // For demonstration purposes, let's assume the user is not authenticated
+      const isAuthenticated = false;
+
+      if (!isAuthenticated) {
+          // If not authenticated, open the login modal
+          $('#loginModal').modal('show');
+      } else {
+          // If authenticated, perform the logic to create the menu
+          // You can redirect to the create menu page or show the create menu form here
+          alert('Create Menu Logic - User is authenticated');
+      }
+  });
+
+  // Additional script logic as needed
+</script>
 </body>
 </html>
