@@ -14,12 +14,30 @@
       font-family: 'Poppins', sans-serif;
     }
   </style>
+ 
   <title>QR-Code Restaurants</title>
+  <script>
+    // Add jQuery to close the navbar when a nav item is clicked
+    $(document).ready(function(){
+      $(".nav-link").on('click', function(event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          var hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+            window.location.hash = hash;
+          });
+        }
+        $('.navbar-collapse').collapse('hide');
+      });
+    });
+  </script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="z-index: 1000;">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#home">
       <img src="Assets/Caribou_Karibu_Logo_New and final/Caribou_Karibu_Logo.png" alt="Caribou Logo" width="40" height="40">
     </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,7 +105,7 @@
               </div>
           </div>
           <div class="col-lg-6 text-center text-lg-end" style="min-height: 664px">
-            <img src="Assets/menu1.jpeg" alt="menu1" class="img-fluid rounded" style="width: 100%; max-width: 300px; height: auto; margin-top: 80px;">
+            <img src="Assets/menu1.jpeg" alt="menu1" class="img-fluid rounded" style="width: 100%; max-width: 300px; height: auto; margin-top: 120px;">
         </div>
         
         

@@ -16,6 +16,13 @@
             max-width: 400px;
             margin: auto;
             margin-top: 100px;
+            text-align: center; /* Center the content */
+        }
+
+        .logo-img {
+            width: 80px; /* Increase the size as needed */
+            height: 80px;
+            margin-bottom: 20px; /* Adjust the margin as needed */
         }
     </style>
     <title>Login - QR-Code Restaurants</title>
@@ -24,6 +31,10 @@
 <body>
     <!-- Login Form -->
     <div class="container login-container">
+        <a class="navbar-brand" href="index.html#home">
+            <img src="Assets/Caribou_Karibu_Logo_New and final/Caribou_Karibu_Logo.png" alt="Caribou Logo" class="logo-img" >
+        </a>
+        
         <h2 class="text-center mb-4">Login</h2>
         <form>
             <div class="form-group mb-3">
@@ -34,7 +45,7 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" placeholder="Enter your password">
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" class="btn btn-primary btn-block mb-3">Login</button>
         </form>
         <div class="text-center mb-3">
             <p>Don't have an account? <a href="signup.html">Sign up</a></p>
