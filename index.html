@@ -8,11 +8,120 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      
     }
 
     .navbar-nav .nav-link {
       font-family: 'Poppins', sans-serif;
     }
+       .category-container {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+            overflow-x: auto; 
+            white-space: nowrap; 
+            text-align: center;
+        }
+        .header {
+      text-align: center;
+      padding: 20px;
+    }
+   
+    .categories {
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .category {
+      margin-right: 15px;
+    }
+
+        .logo img {
+            max-width: 100%;
+        }
+
+
+
+        .category {
+            display: inline-block; /* Display categories in a line */
+            margin-right: 10px; /* Adjust the space between categories */
+        }
+
+        .category button {
+            width: 150px; /* Fixed width for each category */
+        }
+
+        .category button:hover {
+            color: #007bff;
+        }
+
+        .emoji {
+            font-size: 40px;
+        }
+
+        .category-name {
+            margin-top: 5px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        .caribou-logo {
+            max-width: 100px;
+        }
+
+        .categories {
+            display: flex;
+        }
+
+        .category {
+            margin-right: 10px;
+        }
+
+        .food-items-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            
+        }
+
+        .food-category {
+            width: 30%; /* Adjust the width as needed */
+            margin-bottom: 20px;
+        }
+
+        .food-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .food-item img {
+            max-width: 100%;
+        }
+        .like-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: none;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  .liked {
+    background-image: url('path_to_red_heart_icon.png');
+  }
+
   </style>
  
   <title>QR-Code Restaurants</title>
@@ -32,7 +141,44 @@
         $('.navbar-collapse').collapse('hide');
       });
     });
+
+   
   </script>
+
+<!-- Add this script to your HTML -->
+<script>
+  function showCategory(categoryId) {
+    // Hide all food categories
+    document.querySelectorAll('.food-category').forEach(category => {
+      category.style.display = 'none';
+    });
+
+    // Show the selected category
+    const selectedCategory = document.getElementById(categoryId);
+    if (selectedCategory) {
+      selectedCategory.style.display = 'block';
+    }
+  }
+
+  // Function to handle the ordering of a food item
+  function orderFood(foodId, price) {
+    const quantityElement = document.getElementById(`quantity-${foodId}`);
+    const totalAmountElement = document.getElementById('total-amount');
+
+    // Get the current quantity and total amount
+    let quantity = parseInt(quantityElement.innerText);
+    let totalAmount = parseFloat(totalAmountElement.innerText.replace('$', ''));
+
+    // Increment the quantity and update the total amount
+    quantity++;
+    totalAmount += price;
+
+    // Update the display
+    quantityElement.innerText = quantity;
+    totalAmountElement.innerText = `$${totalAmount.toFixed(2)}`;
+  }
+</script>
+
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="z-index: 1000;">
@@ -124,159 +270,296 @@
  
 </section>
 
-<section class="section" id="how-it-work">
-  <div class="container">
-      <div class="row justify-content-center mb-lg-5">
-          <div class="col-md-8 col-lg-6 text-center">
-              <h2 class="title">How does it Work?</h2>
-              <p class="text-muted">Boost your orders by over 40%. Here&#039;s how:</p>
-          </div>
-      </div>
 
-      <div class="row">
-          <div class="col d-lg-none d-flex justify-content-center my-3">
-              <a href="https://app.instalacarte.com/#/signup" data-show-when-not-logged-in class="btn btn-sm btn-primary">Create Menu</a>
-              <a href="https://app.instalacarte.com/#/business-info" data-show-when-logged-in class="btn btn-sm btn-primary">Create Menu</a>
-          </div>
 
-          <div class="col-lg-4">
-              <div class="work-box px-lg-5 text-center mb-5 mb-lg-0">
-                  <h5 class="fw-semibold">1. Register &amp; Get QR</h5>
-                  <img class="screenshot" src="/landing/images/how-it-works/step-1.png" alt="Step 1" />
-                  <p class="text-muted">Provide the name of your restaurant, the language for the menu, your country, and indicate if you want to use images and ordering.</p>
-                  <img src="/landing/images/arrow-top.png" alt="" class="work-arrow" />
-              </div>
-          </div>
-          <div class="col-lg-4">
-              <div class="work-box px-lg-5 text-center mb-5 mb-lg-0">
-                  <h5 class="fw-semibold">2. Add categories &amp; items</h5>
-                  <img class="screenshot" src="/landing/images/how-it-works/step-2.png" alt="Step 2" />
-                  <p class="text-muted">Opt for a pre-designed template or craft your own. Fill your menu with a variety of menu items, prices, etc. We can also create the menu for you.</p>
-                  <img src="/landing/images/arrow-bottom.png" alt="" class="work-arrow" />
-              </div>
-          </div>
-          <div class="col-lg-4">
-              <div class="work-box px-lg-5 text-center mb-5 mb-lg-0">
-                  <h5 class="fw-semibold">3. Start receiving orders</h5>
-                  <img class="screenshot" src="/landing/images/how-it-works/step-3.png" alt="Step 3" />
-                  <p class="text-muted">Start receiving orders: Receive unlimited dine-in, delivery and takeaway orders with our  free subscription.</p>
-              </div>
-          </div>
-      </div>
+<div class="container">
+  <!-- Menu section -->
+  <div class="header-logo-container bg-light d-flex justify-content-center align-items-center">
+    <img src="Assets/Caribou_Karibu_Logo_New and final/Caribou_Karibu_Logo.png" alt="Caribou Logo" class="img-fluid rounded karibu-logo" style="max-width: 100px; max-height: 100px;">
   </div>
-</section>
+  
+  <div class="header">
+  <div class="categories mt-5">
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('popular-foods')">
+        <span class="emoji">🌟</span>
+        <p class="category-name">Popular</p>
+      </button>
+    </div>
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('curry-foods')">
+        <span class="emoji">🍛</span>
+        <p class="category-name">Curry</p>
+      </button>
+    </div>
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('ramen-foods')">
+        <span class="emoji">🍜</span>
+        <p class="category-name">Ramen</p>
+      </button>
+    </div>
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('teppanyaki-foods')">
+        <span class="emoji">🍝</span>
+        <p class="category-name">Teppanyaki</p>
+      </button>
+    </div>
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('donburi-foods')">
+        <span class="emoji">🍚</span>
+        <p class="category-name">Donburi</p>
+      </button>
+    </div>
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('kokoro-bowls-foods')">
+        <span class="emoji">🍲</span>
+        <p class="category-name">Kokoro bowls</p>
+      </button>
+    </div>
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('sides-foods')">
+        <span class="emoji">🥗</span>
+        <p class="category-name">Sides</p>
+      </button>
+    </div>
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('desserts-foods')">
+        <span class="emoji">🍨</span>
+        <p class="category-name">Desserts</p>
+      </button>
+    </div>
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('drinks-foods')">
+        <span class="emoji">🥤</span>
+        <p class="category-name">Drinks</p>
+      </button>
+    </div>
+    <div class="category me-3">
+      <button class="btn btn-light btn-lg" onclick="showCategory('kids-foods')">
+        <span class="emoji">👶</span>
+        <p class="category-name">Kids</p>
+      </button>
+    </div>
+    <div class="category">
+      <button class="btn btn-light btn-lg" onclick="showCategory('extras-foods')">
+        <span class="emoji">🍤</span>
+        <p class="category-name">Extras</p>
+      </button>
+    </div>
+  </div>    
+</div>
+ </div>
 
-<section class="section bg-light" id="features">
-  <div class="container">
-      <div class="row justify-content-center mb-5">
-          <div class="col-md-8 col-lg-6 text-center">
-              <h6 class="subtitle">Our Features</h6>
-          </div>
+
+ <!-- Food items under "Popular" category -->
+ <div class="food-items-container bg-light mx-md-5 py-4">
+   <div class="food-category" id="popular-foods">
+     <div class="row">
+       <!-- Food Item 1 -->
+       <div class="col-md-5 mb-4">
+         <div class="food-item rounded shadow" style="width: 140px; position: relative;">
+           <img src="Assets/prawn.png" alt="Food 1" class="img-fluid rounded-top" style="max-width: 100%;">
+           <div class="p-3">
+             <p class="food-name mb-1">Delicious Dish 1</p>
+             <p class="food-price mb-1">$10.99</p>
+             <button class="like-button" id="like-button-1" onclick="toggleLike(1)">🤍</button>
+             <button class="btn btn-primary" onclick="orderFood(1, 10.99)">+</button>
+      <!-- Quantity display -->
+      <span id="quantity-1" class="ms-2">0</span>
+            </div>
+         </div>
+       </div>
+ 
+       <!-- Food Item 2 -->
+       <div class="col-md-5 mb-4">
+         <div class="food-item rounded shadow" style="width: 140px; position: relative;">
+           <img src="Assets/firecracker.png" alt="Food 2" class="img-fluid rounded-top" style="max-width: 100%;">
+           <div class="p-3">
+             <p class="food-name mb-1">Tasty Treat 2</p>
+             <p class="food-price mb-1">$8.99</p>
+             <button class="like-button" id="like-button-1" onclick="toggleLike(1)">🤍</button>
+            </div>
+         </div>
+       </div>
+ 
+       <!-- Food Item 3 -->
+       <div class="col-md-5 mb-4">
+         <div class="food-item rounded shadow" style="width: 140px; position: relative;">
+           <img src="Assets/katsu.png" alt="Food 3" class="img-fluid rounded-top" style="max-width: 100%;">
+           <div class="p-3">
+             <p class="food-name mb-1">Savory Special 3</p>
+             <p class="food-price mb-1">$12.99</p>
+             <button class="like-button" id="like-button-1" onclick="toggleLike(1)">🤍</button>
+            </div>
+         </div>
+       </div>
+      <div class="col-md-5"> 
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/tofu.png" alt="Food 4" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Fantastic Flavor 4</p>
+          <p class="food-price">$14.99</p>
+          <button class="btn btn-primary like-button">Like</button>
+      </div>
       </div>
 
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <img src="Assets/menu3.jpg" alt="" class="img-fluid d-block mx-auto ms-lg-auto" style="width: 500px; max-width: 90vw; border-radius: 10px;" />
+      <div class="col-md-5">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/chilli-prawn.png" alt="Food 5" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Mouthwatering Mix 5</p>
+          <p class="food-price">$11.99</p>
+          <button class="btn btn-primary like-button">Like</button>
       </div>
-      
-          <div class="col-lg-5 offset-lg-1">
-              <h1 class="fs-38 mb-4">More returning clients and fewer waiters</h1>
-              <p class="text-muted my-5">Transform your restaurant into a streamlined hub of customer satisfaction and loyalty. Here&#039;s how:</p>
+      </div>
 
-              <div class="d-flex mb-1">
-                  <div class="flex-shrink-0">
-                          <span class="avatar avatar-lg bg-white text-primary rounded-circle shadow-primary">
-                              <i class="mdi mdi-check"></i>
-                          </span>
-                  </div>
-                  <div class="flex-grow-1 ms-4">
-                      <p class="text-muted">Tempting Visual Menu: Win over customers with a delightful menu decked with mouth-watering images.</p>
-                  </div>
-              </div>
-              <div class="d-flex mb-1">
-                  <div class="flex-shrink-0">
-                          <span class="avatar avatar-lg bg-white text-primary rounded-circle shadow-primary">
-                              <i class="mdi mdi-check"></i>
-                          </span>
-                  </div>
-                  <div class="flex-grow-1 ms-4">
-                      <p class="text-muted">Effortless Navigation: Make it a breeze for customers to find their favorite dishes. Set up your restaurant online in minutes with our simple, efficient process.</p>
-                  </div>
-              </div>
-              <div class="d-flex mb-1">
-                  <div class="flex-shrink-0">
-                          <span class="avatar avatar-lg bg-white text-primary rounded-circle shadow-primary">
-                              <i class="mdi mdi-check"></i>
-                          </span>
-                  </div>
-                  <div class="flex-grow-1 ms-4">
-                      <p class="text-muted">Multilingual Selection: Speak the language of your customers and broaden your reach. Smart or Plan subscription required.</p>
-                  </div>
-              </div>
-          </div>
+      <div class="col-md-5">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/chilli-sirloin.png" alt="Food 6" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Sizzling Sensation 6</p>
+          <p class="food-price">$16.99</p>
+          <button class="btn btn-primary like-button">Like</button>
       </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/shirodashi.png" alt="Food 7" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Crunchy Delight 7</p>
+          <p class="food-price">$9.99</p>
+          <button class="btn btn-primary like-button">Like</button>
+      </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/chicken-ramen.png" alt="Food 8" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Hearty Meal 8</p>
+          <p class="food-price">$13.99</p>
+          <button class="btn btn-primary like-button">Like</button>
+      </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/teriyaki-sirloin.png" alt="Food 9" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Zesty Zing 9</p>
+          <p class="food-price">$10.49</p>
+          <button class="btn btn-primary like-button">Like</button>
+      </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/cod-mokutan.png" alt="Food 10" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Crispy Crunch 10</p>
+          <p class="food-price">$8.49</p>
+          <button class="btn btn-primary like-button">Like</button>
+      </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/yaki-udon.png" alt="Food 11" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Yummy Udon 11</p>
+          <p class="food-price">$9.49</p>
+          <button class="btn btn-primary like-button">Like</button>
+      </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/yaki-udon.png" alt="Food 11" class="img-fluid" style="max-width: 100%">
+        <p class="food-name">Yummy Udon 11</p>
+        <p class="food-price">$9.49</p>
+        <button class="btn btn-primary like-button">Like</button>
+    </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+        <img src="Assets/yaki-udon.png" alt="Food 11" class="img-fluid" style="max-width: 100%">
+      <p class="food-name">Yummy Udon 11</p>
+      <p class="food-price">$9.49</p>
+      <button class="btn btn-primary like-button">Like</button>
   </div>
-</section>
-
-<section class="section bg-light features-bg">
-  <div class="container">
-      <div class="row align-items-center">
-          <div class="col-lg-5">
-              <h1 class="fs-38 mb-4">Why do you need Caribou ?</h1>
-              <p class="text-muted">Our powerful basic subscription for one menu and ordering service is FREE!</p><p class="text-muted">Free forever, no trials or menu size or order quantity limits. You're under no obligation to upgrade to a paid plan after enjoying the free subscription service. We won't disconnect your QR code, and you're free to use the basic subscription plan without any charge.</p>
-
-              <div class="d-flex mb-1 mt-5">
-                  <div class="flex-shrink-0">
-                          <span class="avatar avatar-lg bg-white text-primary rounded-circle shadow-primary">
-                              <i class="mdi mdi-check"></i>
-                          </span>
-                  </div>
-                  <div class="flex-grow-1 ms-4">
-                      <p class="text-muted">Receive unlimited dine-in, delivery and takeaway orders with free subscription</p>
-                  </div>
-              </div>
-              <div class="d-flex mb-1">
-                  <div class="flex-shrink-0">
-                          <span class="avatar avatar-lg bg-white text-primary rounded-circle shadow-primary">
-                              <i class="mdi mdi-check"></i>
-                          </span>
-                  </div>
-                  <div class="flex-grow-1 ms-4">
-                      <p class="text-muted">Accept payments at Stripe rates (plus 1% with free basic subscription) directly into your Stripe account (coming soon)</p>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-lg-5 offset-lg-1">
-              <img src="Assets/menu4.jpg" style="border-radius: 20px; width: 500px; max-width: 90vw;" alt="" class="img-fluid d-block mx-auto ms-lg-auto" />
-          </div>
-      </div>
   </div>
-</section>
 
-<!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="loginModalLabel">Login</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <!-- Include the login form here or load it dynamically -->
-              <!-- For simplicity, let's assume you have a login form similar to the one in the login.html file -->
-              <form>
-                  <!-- ... Login form fields ... -->
-                  <button type="submit" class="btn btn-primary btn-block">Login</button>
-              </form>
-              <div class="text-center mt-3">
-                  <p>Don't have an account? <a href="#">Sign up</a></p>
-              </div>
-          </div>
-      </div>
+    </div> 
+
+
   </div>
 </div>
+</div>
+<div class="row mt-3">
+  <div class="col-md-12">
+    <p class="text-end">Order for: <span id="total-amount">$0.00</span></p>
+  </div>
+</div>
+<!-- Food items under "Curry" category -->
+<div class="food-items-container bg-light mx-md-5 py-4">
+  <div class="food-category" id="curry-foods">
+    <div class="row">
+      <!-- Food Item 1 -->
+      <div class="col-md-5 mb-4">
+        <div class="food-item rounded shadow" style="width: 140px; position: relative;">
+          <img src="Assets/chicken-curry.png" alt="Chicken Curry" class="img-fluid rounded-top" style="max-width: 100%;">
+          <div class="p-3">
+            <p class="food-name mb-1">Spicy Chicken Curry</p>
+            <p class="food-price mb-1">$10.99</p>
+            <button class="like-button" id="like-button-1" onclick="toggleLike(1)">🤍</button>
+          </div>
+        </div>
+      </div>
 
+      <!-- Food Item 2 -->
+      <div class="col-md-5 mb-4">
+        <div class="food-item rounded shadow" style="width: 140px; position: relative;">
+          <img src="Assets/vegetable-curry.png" alt="Vegetable Curry" class="img-fluid rounded-top" style="max-width: 100%;">
+          <div class="p-3">
+            <p class="food-name mb-1">Mild Vegetable Curry</p>
+            <p class="food-price mb-1">$8.99</p>
+            <button class="like-button" id="like-button-2" onclick="toggleLike(2)">🤍</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Food Item 3 -->
+      <div class="col-md-5 mb-4">
+        <div class="food-item rounded shadow" style="width: 140px; position: relative;">
+          <img src="Assets/lamb-curry.png" alt="Lamb Curry" class="img-fluid rounded-top" style="max-width: 100%;">
+          <div class="p-3">
+            <p class="food-name mb-1">Sizzling Lamb Curry</p>
+            <p class="food-price mb-1">$12.99</p>
+            <button class="like-button" id="like-button-3" onclick="toggleLike(3)">🤍</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more food items as needed -->
+      <!-- Food Item 4 -->
+      <div class="col-md-5 mb-4">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/fish-curry.png" alt="Fish Curry" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Spicy Fish Curry</p>
+          <p class="food-price">$14.99</p>
+          <button class="btn btn-primary like-button">Like</button>
+        </div>
+      </div>
+
+      <!-- Food Item 5 -->
+      <div class="col-md-5 mb-4">
+        <div class="food-item mb-4 rounded shadow" style="width: 140px;">
+          <img src="Assets/pumpkin-curry.png" alt="Pumpkin Curry" class="img-fluid" style="max-width: 100%">
+          <p class="food-name">Creamy Pumpkin Curry</p>
+          <p class="food-price">$11.99</p>
+          <button class="btn btn-primary like-button">Like</button>
+        </div>
+      </div>
+
+      <!-- Add more food items as needed -->
+
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
